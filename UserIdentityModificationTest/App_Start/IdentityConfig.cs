@@ -27,44 +27,17 @@ namespace UserIdentityModificationTest
         }
         private async Task configSendGridasync(IdentityMessage message)
         {
-            //var myMessage = new SendGridMessage();
-            //myMessage.AddTo(message.Destination);
-            //myMessage.From = new System.Net.Mail.MailAddress(
-            //                    "shelter.developer@outlook.com");
-            //myMessage.Subject = message.Subject;
-            //myMessage.Text = message.Body;
-            //myMessage.Html = message.Body;
-            ////var username = "azure_2fc37521edfdbef72dc8da6a15a903c6@azure.com";
-            ////var pswd = "2QjShZ0hBJ8RB7P";
-            //var credentials = new NetworkCredential(
-            //           ConfigurationManager.AppSettings["azure_2fc37521edfdbef72dc8da6a15a903c6@azure.com"],
-            //           ConfigurationManager.AppSettings["2QjShZ0hBJ8RB7P"]
-            //           );
-
-            //// Create a Web transport for sending email.
-            //var transportWeb = new Web(credentials);
-            //transportWeb.DeliverAsync(myMessage);
-            //// Send the email.
-            //if (transportWeb != null)
-            //{
-            //    await transportWeb.DeliverAsync(myMessage);
-            //}
-            //else
-            //{
-            //    Trace.TraceError("Failed to create Web transport.");
-            //    await Task.FromResult(0);
-            //}
-       
+                  
             var smtp = new SmtpClient("smtp.sendgrid.net", 587);
 
-            var creds = new NetworkCredential("azure_2fc37521edfdbef72dc8da6a15a903c6@azure.com", "2QjShZ0hBJ8RB7P");
+            var creds = new NetworkCredential("send grid user name of ur account", "send grid user password of ur account");
 
             smtp.UseDefaultCredentials = false;
             smtp.Credentials = creds;
             smtp.EnableSsl = false;
 
             var to = new MailAddress(message.Destination);
-            var from = new MailAddress("shelter.developer@outlook.com", "Shelter");
+            var from = new MailAddress("from Mail address of ur account", "Name");
 
             var msg = new MailMessage();
 
